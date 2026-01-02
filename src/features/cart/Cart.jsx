@@ -1,9 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
 import {removeItem, increase, decrease,calculateTotals, clearCart  } from "./cartSlice";
 import { useEffect } from "react";
+import { openModal } from "../modal/modalSlice";
 
 export function Cart(){
-  // const cartItems = useSelector(state => state.cart.cartItems)
 
   const {cartItems, amount, total} = useSelector(state => state.cart)
 
@@ -27,9 +27,8 @@ export function Cart(){
 
       <footer>
         Total: ${total}
-        <button onClick={()=> dispatch(clearCart())}>clear cart</button>
+        <button onClick={()=> dispatch(openModal())}>clear cart</button>
       </footer>
     </>
   )
 }
-

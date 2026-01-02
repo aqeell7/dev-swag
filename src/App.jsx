@@ -1,17 +1,16 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 import { ProductsList } from './features/products/ProductsList'
 import { Cart } from './features/cart/Cart'
+import { Modal } from './features/modal/Modal'
+import { useSelector } from 'react-redux'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const isOpen = useSelector((state)=> state.modal.isOpen)
 
   return (
     <>
      <ProductsList/>
      <Cart/>
+     {isOpen && <Modal/>}
     </>
   )
 }
