@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchProducts } from "./productsSlice"
+import { addItem } from "../cart/cartSlice"
 
 export function ProductsList(){
   const dispatch = useDispatch()
@@ -16,12 +17,16 @@ export function ProductsList(){
   if( status === 'loading') return <p>Loading...</p>
   if(status === 'failed') return <p>Error fetching the products</p>
 
+  function addBtn(item) {
+    dispatch(addItem(item))
+  }
+
   return (
     <>
    {status === 'succeeded' &&  <ul>
     {items.map((item)=>{
       return (
-        <li key={item.id}>{item.title}</li>
+        <li key={item.id}>{item.title} <button onClick={()=>addBtn(item)}>add Item</button></li>
       )
     })}
     </ul>}
