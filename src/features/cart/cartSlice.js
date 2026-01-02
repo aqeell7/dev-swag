@@ -42,10 +42,27 @@ const cartSlice = createSlice({
       }else{
         existingItem.quantity -=1
       }
+    },
+
+    calculateTotals:(state)=>{
+      let amount = 0;
+      let total = 0;
+
+      state.cartItems.forEach((item)=>{
+        amount  += item.quantity
+        total += item.quantity * item.price
+      })  
+
+      state.amount = amount
+      state.total = total.toFixed(2)
+    },
+
+    clearCart:(state)=>{
+      state.cartItems.length = 0
     }
   }
 })
 
-export const {addItem, removeItem, increase, decrease} = cartSlice.actions
+export const {addItem, removeItem, increase, decrease, calculateTotals, clearCart} = cartSlice.actions
 
 export default cartSlice.reducer

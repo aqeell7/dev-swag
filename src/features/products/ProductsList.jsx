@@ -26,7 +26,7 @@ export function ProductsList(){
    {status === 'succeeded' &&  <ul>
     {items.map((item)=>{
       return (
-        <li key={item.id}>{item.title} <button onClick={()=>addBtn(item)}>add Item</button></li>
+        <li key={item.id}>{item.title} price: {item.price} <button onClick={()=>addBtn(item)}>add Item</button></li>
       )
     })}
     </ul>}
