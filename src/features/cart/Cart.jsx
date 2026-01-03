@@ -16,6 +16,7 @@ export function Cart(){
   if(cartItems.length == 0) return <p>"your cart is empty"</p>
   return (
     <>
+    ----------Cart Items----------
     {cartItems.length > 0 && <ul>
       {cartItems.map((item)=>{
         return <li key={item.id}>Name: {item.title} Price: {item.price} Quantity: {item.quantity}
