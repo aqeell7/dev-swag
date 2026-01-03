@@ -3,13 +3,17 @@ import { useParams } from "react-router-dom";
 
 export function ProductDetail() {
   const { id } = useParams();
-  const items = useSelector(state => state.products.items);
-  
+  const {items,status,error} = useSelector(state => state.products);
+
+  if(status === "loading"){
+    return <p>Loading...</p>
+  }
+
   console.log(items)
   const product = items.find(item => item.id === Number(id));
 
-  if (!product) {
-    return <p>Product not found</p>;
+  if(!product){
+    return <p>product not found</p>
   }
 
   return (
