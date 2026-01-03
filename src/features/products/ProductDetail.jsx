@@ -9,6 +9,10 @@ export function ProductDetail() {
     return <p>Loading...</p>
   }
 
+  if(status === "failed"){
+    return <p>"sorry, we couldn't load the products</p>
+  }
+
   console.log(items)
   const product = items.find(item => item.id === Number(id));
 
