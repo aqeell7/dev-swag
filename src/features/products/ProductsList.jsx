@@ -8,12 +8,6 @@ export function ProductsList(){
   const items = useSelector(state => state.products.items)
   const status = useSelector(state => state.products.status)
 
-  useEffect(()=>{
-
-    dispatch(fetchProducts())
-
-  },[dispatch])
-
   if( status === 'loading') return <p>Loading...</p>
   if(status === 'failed') return <p>Error fetching the products</p>
 
