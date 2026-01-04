@@ -7,9 +7,17 @@ export function Checkout(){
   const [name, setName] = useState('')
   const [address, setAddress] = useState('')
 
+  const[order, setOrder] = useState(null)
+
   const {cartItems,amount, total} = useSelector(state => state.cart)
 
   const dispatch = useDispatch()
+
+  function getEstimatedDeliveryDate(createdAt, days = 5){
+    const date = new Date(createdAt)
+    date.setDate(date.getDate() + days)
+    return date.toDateString()
+  }
 
   function handleSubmit(e){
     e.preventDefault()
@@ -24,12 +32,26 @@ export function Checkout(){
       return;
     }
 
+    const createdAt = new Date().toISOString();
+
+    setOrder({
+      customerName: name,
+      address: address,
+      items: cartItems,
+      totalItems: amount,
+      totalPrice: total,
+      createdAt,
+      estimatedDelivery: getEstimatedDeliveryDate(createdAt, 4)
+    })
+
     console.log(name , address)
     dispatch(clearCart())
   }
 
   return(
     <>
+    {!order && (
+      <>
     <h3>Checkout Form</h3>
 
     <div>
@@ -54,6 +76,33 @@ export function Checkout(){
 
         <div>total items:{amount} total price:{total}</div>
         
+    </div>
+    </>
+    )}
+
+    <div>
+          {order && (
+             <div className="bill">
+              <h3>Order Summary</h3>
+
+              <p><strong>Name: </strong>{order.customerName}</p>
+              <p><strong>Address: </strong>{order.address}</p>
+
+              <ul>
+                {order.items.map((item)=>{
+                  return <li key={item.id}>
+                    {item.title} x {item.quantity} = ${item.price * item.quantity}
+                  </li>
+                })}
+              </ul>
+
+              <p><strong>Total Items: </strong>{order.totalItems}</p>
+              <p><strong>Total Price: </strong>${order.totalPrice}</p>
+
+              <p>Estimated Delivery Date: {order.estimatedDelivery}</p>
+
+             </div>
+          )}
     </div>
     </>
   )
