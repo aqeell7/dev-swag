@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { clearCart } from "../cart/cartSlice"
+import './Checkout.css'
 
 export function Checkout(){
 
@@ -49,9 +50,9 @@ export function Checkout(){
   }
 
   return(
-    <>
+    <div className="checkout-container">
     {!order && (
-      <>
+      <div className="checkout-form">
     <h3>Checkout Form</h3>
 
     <div>
@@ -77,12 +78,11 @@ export function Checkout(){
         <div>total items:{amount} total price:{total}</div>
         
     </div>
-    </>
+    </div>
     )}
 
-    <div>
           {order && (
-             <div className="bill">
+             <div className="checkout-summary">
               <h3>Order Summary</h3>
 
               <p><strong>Name: </strong>{order.customerName}</p>
@@ -103,7 +103,7 @@ export function Checkout(){
 
              </div>
           )}
+    
     </div>
-    </>
   )
 }
