@@ -9,10 +9,6 @@ export function Cart(){
 
   const dispatch = useDispatch()
 
-  useEffect(()=>{
-    dispatch(calculateTotals())
-  },[cartItems, dispatch])
-
   if(cartItems.length == 0) return <p>"your cart is empty"</p>
   return (
     <>

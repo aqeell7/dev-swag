@@ -8,6 +8,9 @@ import { Navbar } from './components/Navbar'
 import { ProductDetail } from './features/products/ProductDetail'
 import { useDispatch } from 'react-redux'
 import { fetchProducts } from './features/products/productsSlice'
+import { Checkout } from './features/checkout/Checkout'
+import { calculateTotals } from './features/cart/cartSlice'
+
 
 function App() {
   const isOpen = useSelector((state)=> state.modal.isOpen)
@@ -24,6 +27,10 @@ function App() {
     dispatch(fetchProducts())
   },[dispatch])
 
+  useEffect(()=>{
+    dispatch(calculateTotals())
+  },[cartItems])
+
   return (
     <>
      {isOpen && <Modal/>}
@@ -33,8 +40,8 @@ function App() {
       <Route path="/" element={<ProductsList/>}/>
       <Route path="/cart" element={<Cart/>}/>
       <Route path="/product/:id" element={<ProductDetail/>}/>
+      <Route path='/checkout' element={<Checkout/>}/>
      </Routes>
-
     </>
   )
 }

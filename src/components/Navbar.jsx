@@ -10,6 +10,8 @@ export function Navbar(){
      <Link to="/">Home</Link>
      {" | "}
      <Link to="/cart">Cart({amount})</Link>
+     {" | "}
+     <Link to="checkout">checkout</Link>
      </nav>
     </>
   )
