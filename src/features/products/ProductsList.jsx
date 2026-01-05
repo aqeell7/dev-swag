@@ -16,7 +16,7 @@ export function ProductsList(){
   }
 
   return (
-    <>
+    <div className="products-grid">
    {status === 'succeeded' &&  <ul>
     {items.map((item)=>{
       return (
@@ -24,6 +24,6 @@ export function ProductsList(){
       )
     })}
     </ul>}
-    </>
+    </div>
   )
 }
