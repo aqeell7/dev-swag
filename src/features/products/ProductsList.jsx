@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from "react-redux"
 import { fetchProducts } from "./productsSlice"
 import { addItem } from "../cart/cartSlice"
 import "./ProductList.css"
+import { ProductDetail } from "./ProductDetail"
+import { Link } from "react-router-dom"
+
 
 export function ProductsList(){
   const dispatch = useDispatch()
@@ -22,9 +25,11 @@ export function ProductsList(){
     {items.map((item)=>{
       return (
         <div className="product-card" key={item.id}>
+          <Link to={`/product/${item.id}`} >
           <img src={item.image} alt={item.title} />
           <h4>{item.title}</h4>
           <p>${item.price}</p>
+          </Link>
            <button onClick={()=>addBtn(item)}>add Item</button></div>
       )
     })}
