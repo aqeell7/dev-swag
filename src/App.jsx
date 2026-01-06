@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux'
 import { fetchProducts } from './features/products/productsSlice'
 import { Checkout } from './features/checkout/Checkout'
 import { calculateTotals } from './features/cart/cartSlice'
+import { closeModal } from './features/modal/modalSlice'
 
 
 function App() {
@@ -29,6 +30,9 @@ function App() {
 
   useEffect(()=>{
     dispatch(calculateTotals())
+    if(cartItems.length === 0){
+      dispatch(closeModal())
+    }
   },[cartItems])
 
   return (
