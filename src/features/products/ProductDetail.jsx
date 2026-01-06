@@ -1,5 +1,7 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import "./ProductDetail.css"
+import { addItem } from "../cart/cartSlice";
 
 export function ProductDetail() {
   const { id } = useParams();
@@ -20,11 +22,18 @@ export function ProductDetail() {
     return <p>product not found</p>
   }
 
+  let dispatch = useDispatch()
+
   return (
-    <div>
+    <div className="product-detail">
+      <img src={product.image} alt={product.title} />
+
+      <div className="product-info">
       <h2>{product.title}</h2>
-      <img src={product.image} alt={product.title} width={200} />
       <p>{product.description}</p>
+      <p className="price">${product.price}</p>
+      <button onClick={()=> dispatch(addItem(product))}>Add to Cart</button> 
+      </div>
     </div>
   );
 }
