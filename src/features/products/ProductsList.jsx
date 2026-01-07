@@ -12,7 +12,7 @@ export function ProductsList(){
   const items = useSelector(state => state.products.items)
   const status = useSelector(state => state.products.status)
 
-  if( status === 'loading') return <p>Loading...</p>
+  if( status === 'loading') return <div className="loading-spinner"></div>
   if(status === 'failed') return <p>Error fetching the products</p>
 
   function addBtn(item) {

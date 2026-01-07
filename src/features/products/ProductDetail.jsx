@@ -2,10 +2,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import "./ProductDetail.css"
 import { addItem } from "../cart/cartSlice";
+import { Link } from "react-router-dom";
 
 export function ProductDetail() {
   const { id } = useParams();
   const {items,status,error} = useSelector(state => state.products);
+
+  let dispatch = useDispatch()
 
   if(status === "loading"){
     return <p>Loading...</p>
@@ -22,10 +25,18 @@ export function ProductDetail() {
     return <p>product not found</p>
   }
 
-  let dispatch = useDispatch()
+  
 
   return (
-    <div className="product-detail">
+    <>
+    
+    <Link to="/" className="btn-return">
+    Back to home
+    </Link>
+   
+   
+   <div className="product-detail">
+
       <img src={product.image} alt={product.title} />
 
       <div className="product-info">
@@ -33,7 +44,9 @@ export function ProductDetail() {
       <p>{product.description}</p>
       <p className="price">${product.price}</p>
       <button onClick={()=> dispatch(addItem(product))}>Add to Cart</button> 
+      
       </div>
     </div>
+    </>
   );
 }

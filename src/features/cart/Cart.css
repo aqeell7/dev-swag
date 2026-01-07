@@ -37,14 +37,13 @@
   background-color: #dc2626; 
 }
 
-/* --- Quantity Buttons (+/-) --- */
 .btn-qty {
   width: 32px;
   height: 32px;
-  display: flex;             /* Centering the symbol */
+  display: flex;            
   justify-content: center;
   align-items: center;
-  background-color: var(--bg-card); /* or a light grey like #f3f4f6 */
+  background-color: var(--bg-card); 
   border: 1px solid var(--text-muted);
   border-radius: var(--radius);
   cursor: pointer;

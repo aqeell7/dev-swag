@@ -38,4 +38,36 @@
   background-color: #ef4444;
   color: white;
   border:none;
+  margin-right: 50px;
+}
+
+.btn-return {
+  display: inline-block;
+  margin: 1rem;
+
+
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+
+  background-color: #2563eb; /* blue */
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-return:hover {
+  background-color: #1e40af;
+  transform: translateY(-1px);
+}
+
+.btn-return:active {
+  transform: translateY(0);
+}
+
+.btn-return:focus {
+  outline: 2px solid #93c5fd;
+  outline-offset: 2px;
 }
