@@ -91,3 +91,33 @@
   animation: spinner 1s linear infinite;
   margin: 50px auto;
 }
+
+.filter-container{
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.filter-container button{
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.filter-container button:hover{
+  background-color: #f0f0f0;
+  border-color: #ccc;
+}
+
+.filter-container button.active{
+  background-color: #333;
+  color: white;
+  border-color: #333;
+}
