@@ -53,8 +53,8 @@ export function ProductsList(){
    {status === 'succeeded' &&  <ul className="products-grid">
     {filteredItems.map((item)=>{
       return (
-        <div className="product-card" key={item.id}>
-          <Link to={`/product/${item.id}`} >
+        <div className="product-card" key={item._id}>
+          <Link to={`/product/${item._id}`} >
           <img src={item.image} alt={item.title} />
           <h4>{item.title}</h4>
           <p>${item.price}</p>

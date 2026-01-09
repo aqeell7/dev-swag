@@ -69,7 +69,7 @@ export function Checkout(){
     <div>
         <ul>
           {cartItems.map((item)=>{
-            return <li key={item.id}>
+            return <li key={item._id}>
               name: {item.title} | price: {item.price} | quantity: {item.quantity}
             </li>
           })}
@@ -90,7 +90,7 @@ export function Checkout(){
 
               <ul>
                 {order.items.map((item)=>{
-                  return <li key={item.id}>
+                  return <li key={item._id}>
                     {item.title} x {item.quantity} = ${item.price * item.quantity}
                   </li>
                 })}

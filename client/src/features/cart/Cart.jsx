@@ -14,7 +14,7 @@ export function Cart(){
     <>
     {cartItems.length > 0 && <ul>
       {cartItems.map((item)=>{
-        return <article className="cart-item" key={item.id}> 
+        return <article className="cart-item" key={item._id}> 
 
         <img src={item.image} alt={item.title} className="cart-item-img" />
 
@@ -25,9 +25,9 @@ export function Cart(){
           </div>  
 
         <div className="cart-item-controls">
-        <button className="btn-qty" onClick={()=> dispatch(increase(item.id))}>+</button> 
-        <button className="btn-qty" onClick={()=> dispatch(decrease(item.id))}>-</button>
-        <button className="btn-danger" onClick={()=> dispatch(removeItem(item.id))}>remove Item</button>
+        <button className="btn-qty" onClick={()=> dispatch(increase(item._id))}>+</button> 
+        <button className="btn-qty" onClick={()=> dispatch(decrease(item._id))}>-</button>
+        <button className="btn-danger" onClick={()=> dispatch(removeItem(item._id))}>remove Item</button>
         </div>
         </article>
       })}

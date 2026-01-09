@@ -19,14 +19,13 @@ export function ProductDetail() {
   }
 
   console.log(items)
-  const product = items.find(item => item.id === Number(id));
+  const product = items.find(item => item._id?.toString() === id);
 
   if(!product){
     return <p>product not found</p>
   }
 
   
-
   return (
     <>
     
