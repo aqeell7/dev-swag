@@ -10,14 +10,17 @@ export const getProducts = async (req,res)=>{
 }
 
 export const createProduct = async (req,res)=>{
-  const product = req.body;
 
-  if(!product.title || product.price == null || !product.category){
+  const {title,price,category,description,image} = req.body
+
+  if(!title || price == null || !category || !image || !description){
     return res.status(400).json({message:"Please provide all the required fields"})
   }
 
   try{
-    const newProduct = await Product.create(product);
+    const newProduct = await Product.create({
+      title,price,category,description,image
+    });
     res.status(201).json(newProduct);
   }catch(error){
     res.status(500).json({message:error.message})
