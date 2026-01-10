@@ -9,20 +9,25 @@ export const getProducts = async (req,res)=>{
   }
 }
 
-export const createProduct = async (req,res)=>{
+export const createProduct = async (req, res) => {
+  const { title, price, category, description } = req.body;
+  const image = req.file?.path;
 
-  const {title,price,category,description,image} = req.body
-
-  if(!title || price == null || !category || !image || !description){
-    return res.status(400).json({message:"Please provide all the required fields"})
+  if (!title || price == null || !category || !description || !image) {
+    return res.status(400).json({ message: "Please provide all required fields" });
   }
 
-  try{
+  try {
     const newProduct = await Product.create({
-      title,price,category,description,image
+      title,
+      price,
+      category,
+      description,
+      image
     });
+
     res.status(201).json(newProduct);
-  }catch(error){
-    res.status(500).json({message:error.message})
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
-}
+};
