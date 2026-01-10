@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {removeItem, increase, decrease,calculateTotals, clearCart  } from "./cartSlice";
 import { openModal } from "../modal/modalSlice";
 import "./Cart.css"
+import { BASE_URL } from "../../config";
 
 export function Cart(){
 
@@ -16,7 +17,7 @@ export function Cart(){
       {cartItems.map((item)=>{
         return <article className="cart-item" key={item._id}> 
 
-        <img src={item.image} alt={item.title} className="cart-item-img" />
+        <img className="cart-item-img" src={`${BASE_URL}${item.image}`} alt={item.title} />
 
         <div className="cart-item-info">
         <h4>{item.title}</h4>

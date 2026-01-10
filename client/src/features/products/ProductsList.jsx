@@ -5,7 +5,7 @@ import { addItem } from "../cart/cartSlice"
 import "./ProductList.css"
 import { ProductDetail } from "./ProductDetail"
 import { Link } from "react-router-dom"
-
+import { BASE_URL } from "../../config"
 
 export function ProductsList(){
   const dispatch = useDispatch()
@@ -55,7 +55,7 @@ export function ProductsList(){
       return (
         <div className="product-card" key={item._id}>
           <Link to={`/product/${item._id}`} >
-          <img src={item.image} alt={item.title} />
+          <img src={`${BASE_URL}${item.image}`} alt={item.title} />
           <h4>{item.title}</h4>
           <p>${item.price}</p>
           </Link>

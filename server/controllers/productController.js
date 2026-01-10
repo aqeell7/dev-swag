@@ -11,8 +11,8 @@ export const getProducts = async (req,res)=>{
 
 export const createProduct = async (req, res) => {
   const { title, price, category, description } = req.body;
-  const image = req.file?.path;
-
+  const image = `/uploads/${req.file.filename}`
+  
   if (!title || price == null || !category || !description || !image) {
     return res.status(400).json({ message: "Please provide all required fields" });
   }

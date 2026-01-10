@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import "./ProductDetail.css"
 import { addItem } from "../cart/cartSlice";
 import { Link } from "react-router-dom";
+import { BASE_URL } from "../../config";
 
 export function ProductDetail() {
   const { id } = useParams();
@@ -36,7 +37,8 @@ export function ProductDetail() {
    
    <div className="product-detail">
 
-      <img src={product.image} alt={product.title} />
+    
+      <img src={`${BASE_URL}${product.image}`} alt={product.title} />
 
       <div className="product-info">
       <h2>{product.title}</h2>

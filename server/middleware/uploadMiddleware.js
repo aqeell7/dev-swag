@@ -1,7 +1,6 @@
 import multer from "multer";
 import path from "path";
 
-
 const __dirname = path.resolve()
 
 const storage = multer.diskStorage({
