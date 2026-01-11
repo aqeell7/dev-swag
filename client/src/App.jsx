@@ -11,6 +11,7 @@ import { fetchProducts } from './features/products/productsSlice'
 import { Checkout } from './features/checkout/Checkout'
 import { calculateTotals } from './features/cart/cartSlice'
 import { closeModal } from './features/modal/modalSlice'
+import { AddProduct } from './features/products/AddProduct'
 
 
 function App() {
@@ -46,6 +47,8 @@ function App() {
       <Route path="/product/:id" element={<ProductDetail/>}/>
       <Route path='/checkout' element={<Checkout/>}/>
      </Routes>
+
+     <AddProduct/>
     </>
   )
 }
