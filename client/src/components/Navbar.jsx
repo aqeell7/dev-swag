@@ -13,6 +13,8 @@ export function Navbar(){
      <Link to="/cart">Cart({amount})</Link>
 
      <Link to="checkout">checkout</Link>
+
+     <Link to="AddProducts">Add products</Link>
      </nav>
     </>
   )
