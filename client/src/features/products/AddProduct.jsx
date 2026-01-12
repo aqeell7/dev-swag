@@ -3,6 +3,7 @@ import { BASE_URL } from "../../config";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { fetchProducts } from "./productsSlice";
+import './AddProduct.css'
 
 export function AddProduct(){
 
@@ -60,18 +61,20 @@ export function AddProduct(){
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" name="title" placeholder="Title" value={product.title} onChange={handleChange} />
+    <div className="add-product-container">
+        <form onSubmit={handleSubmit} className="add-product-form">
+          <input type="text" name="title" placeholder="Title" value={product.title} onChange={handleChange} />
 
-      <input type="text" name="price" placeholder="price" value={product.price} onChange={handleChange} />
+          <input type="text" name="price" placeholder="price" value={product.price} onChange={handleChange} />
 
-      <input type="text" name="category" placeholder="category" value={product.category} onChange={handleChange} />
+          <input type="text" name="category" placeholder="category" value={product.category} onChange={handleChange} />
 
-      <textarea type="text" name="description" placeholder="Description" value={product.description} onChange={handleChange}/>
+          <textarea type="text" name="description" placeholder="Description" value={product.description} onChange={handleChange}/>
 
-      <input type="file" accept="image/*" onChange={handleImageChange} />
-    
-     <button type="submit">Add Product</button>
-    </form>
+          <input type="file" accept="image/*" onChange={handleImageChange} />
+        
+        <button type="submit">Add Product</button>
+       </form>
+    </div>
   )
 }
