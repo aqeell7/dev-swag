@@ -1,7 +1,13 @@
 import { useState } from "react"
 import { BASE_URL } from "../../config";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { fetchProducts } from "./productsSlice";
 
 export function AddProduct(){
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
  const [product, setProduct] = useState({
   title:"",
@@ -46,6 +52,8 @@ export function AddProduct(){
 
       const data = await res.json();
       console.log(data)
+      dispatch(fetchProducts());
+      navigate('/')
     }catch(error){
 
     }

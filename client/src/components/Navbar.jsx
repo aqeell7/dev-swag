@@ -14,7 +14,7 @@ export function Navbar(){
 
      <Link to="checkout">checkout</Link>
 
-     <Link to="AddProducts">Add products</Link>
+     <Link to="addProducts">Add products</Link>
      </nav>
     </>
   )
