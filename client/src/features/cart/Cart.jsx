@@ -3,12 +3,15 @@ import {removeItem, increase, decrease,calculateTotals, clearCart  } from "./car
 import { openModal } from "../modal/modalSlice";
 import "./Cart.css"
 import { BASE_URL } from "../../config";
+import { useNavigate } from "react-router-dom";
+
 
 export function Cart(){
 
   const {cartItems, amount, total} = useSelector(state => state.cart)
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   if(cartItems.length == 0) return <p>"your cart is empty"</p>
   return (
@@ -36,8 +39,24 @@ export function Cart(){
       </ul>}
 
       <footer className="cart-footer">
-        <h3>Total: ${total}</h3>
-        <button className="btn-clear" onClick={()=> dispatch(openModal())}>clear cart</button>
+        <hr />
+        <div className="cart-total">
+          <h3>Total: <span>${total}</span></h3>
+        </div>
+        
+        <div className="cart-actions">
+           {/* 3. Add the Checkout Button */}
+          <button 
+            className="btn-checkout" 
+            onClick={() => navigate('/checkout')}
+          >
+            Proceed to Checkout
+          </button>
+
+          <button className="btn-clear" onClick={() => dispatch(openModal())}>
+            Clear Cart
+          </button>
+        </div>
       </footer>
     </>
   )
